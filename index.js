@@ -1,11 +1,16 @@
 const express = require('express')
 const app = express()
-require("./cosas")
-
+require("./websocket_file.js")
+//require("./cosas")
 require('./processServices')
 
 
 const palabrasRecibidas = ['1', '2', '3', '4']
+app.use((req, res, next) => {
+	res.set("Access-Control-Allow-Origin", "63.35.252.202:3024")
+	next()
+})
+
 app.use( express.static('webpage'))
 app.use(express.json())
 
